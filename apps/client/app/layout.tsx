@@ -1,36 +1,38 @@
-import { Theme } from "@radix-ui/themes";
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { fontSans } from "@/config/fonts"
+import { siteConfig } from "@/config/site"
+import "@/styles/globals.css"
+import clsx from "clsx"
+import { Metadata } from "next"
+import { Providers } from "./providers"
 
 export const metadata: Metadata = {
-  title: "WaitLeads | Open Source wailist to launch your products",
-  description:
-    "Launch your products today using our software, stop paying big amount of money.",
-};
+  title: {
+    default: siteConfig.name,
+    template: `%s - ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  icons: {
+    icon: "/favicon.ico",
+  },
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={clsx(
+          "min-h-screen text-foreground bg-background font-sans antialiased",
+          fontSans.variable,
+        )}
       >
-        <Theme>{children}</Theme>
+        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+          {children}
+        </Providers>
       </body>
     </html>
-  );
+  )
 }

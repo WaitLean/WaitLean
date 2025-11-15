@@ -1,12 +1,7 @@
-"use client";
+"use client"
 
-import { Button, Flex, Text } from "@radix-ui/themes";
+import { Button } from "@heroui/button"
 
-export default function HomePage() {
-  return (
-    <Flex direction="column" gap="2">
-      <Text>Hello from Radix Themes :)</Text>
-      <Button>Let's go</Button>
-    </Flex>
-  );
+export default function Home() {
+  return <Button color="primary">Button</Button>
 }
