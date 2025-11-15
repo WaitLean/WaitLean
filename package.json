@@ -1,0 +1,20 @@
+{
+  "name": "waitlean",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "workspaces": [
+    "apps/*"
+  ],
+  "packageManager": "npm@10.0.0",
+  "devDependencies": {
+    "turbo": "^2.6.1"
+  }
+}
