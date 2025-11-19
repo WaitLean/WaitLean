@@ -14,6 +14,6 @@ const config = {
     },
   },
   darkMode: "class",
-}
+};
 
-module.exports = config
+module.exports = config;

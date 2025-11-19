@@ -1,20 +1,20 @@
-export type SiteConfig = typeof siteConfig
+export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: 'WaitLean',
-  description: 'Open Source waitlist to launch your products',
+  name: "WaitLean",
+  description: "Open Source waitlist to launch your products",
   navItems: [
     {
-      label: 'Home',
-      href: '/',
+      label: "Home",
+      href: "/",
     },
   ],
   navMenuItems: [],
   links: {
-    github: '',
-    twitter: '',
-    docs: '',
-    discord: '',
-    sponsor: '',
+    github: "",
+    twitter: "",
+    docs: "",
+    discord: "",
+    sponsor: "",
   },
-}
+};
