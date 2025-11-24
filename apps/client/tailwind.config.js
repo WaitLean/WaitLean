@@ -1,4 +1,4 @@
-const { heroui } = require("@heroui/react")
+const { heroui } = require("@heroui/react");
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -71,6 +71,12 @@ const config = {
       defaultExtendTheme: "dark", // default theme to extend on custom themes
       layout: {
         disabledOpacity: "0.5",
+        radius: {
+          medium: ".45rem",
+        },
+        borderWidth: {
+          medium: 'thin'
+        }
       },
       themes: {
         dark: {
@@ -184,6 +190,6 @@ const config = {
       },
     }),
   ],
-}
+};
 
-module.exports = config
+module.exports = config;
