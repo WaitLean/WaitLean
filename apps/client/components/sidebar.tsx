@@ -51,7 +51,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <div className="min-w-[250px] border-r min-h-[100vh] bg-[#0A0A0A] backdrop-blur-md flex flex-col">
+    <div className="min-w-[220px] border-r min-h-[100vh] bg-[#0A0A0A] backdrop-blur-md flex flex-col">
       <div className="p-4 pt-12 pb-6 flex gap-2 items-center">
         <Image
           alt="Banner image"
