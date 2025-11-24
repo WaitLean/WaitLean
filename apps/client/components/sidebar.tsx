@@ -3,10 +3,13 @@
 import { cn } from "@/lib/utils";
 import {
   BookOpenIcon,
-  BuildingOfficeIcon,
-  HomeIcon,
-  PlusIcon,
-  UserIcon,
+  ChartBarIcon,
+  Cog6ToothIcon,
+  CreditCardIcon,
+  GlobeAltIcon,
+  KeyIcon,
+  PlusCircleIcon,
+  SunIcon,
 } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import Image from "next/image";
@@ -19,29 +22,28 @@ import {
   DropdownMenu,
   DropdownSection,
   DropdownTrigger,
-  User,
 } from "@heroui/react";
 
 const navItems = [
   {
-    href: "/dashboard",
-    label: "Home",
-    icon: HomeIcon,
+    href: "/app/dashboard",
+    label: "Dashboard",
+    icon: ChartBarIcon,
   },
   {
-    href: "/organization",
-    label: "My Organization",
-    icon: BuildingOfficeIcon,
+    href: "/app/google-search",
+    label: "Google Search",
+    icon: KeyIcon,
   },
   {
-    href: "/account",
-    label: "My account",
-    icon: UserIcon,
+    href: "/app/landing-page",
+    label: "Landing page",
+    icon: GlobeAltIcon,
   },
   {
-    href: "/dashboard/add/waitlist",
+    href: "/app/create/waitlist",
     label: "New Waitlist",
-    icon: PlusIcon,
+    icon: PlusCircleIcon,
   },
 ];
 
@@ -94,6 +96,7 @@ export default function Sidebar() {
           <div className="my-4">
             <Link
               href={"/docs"}
+              target="_blank"
               className={clsx(
                 "flex items-center gap-2 py-1.5 px-5 h-[45px] text-muted-foreground hover:bg-default/60 text-sm"
               )}
@@ -111,38 +114,85 @@ export default function Sidebar() {
               radius="sm"
             >
               <DropdownTrigger>
-                <div className="flex w-full px-4 h-[45px] items-center gap-2 cursor-pointer hover:bg-default/60">
-                  <div className="size-6 flex items-center justify-center bg-secondary rounded-full text-[9px] font-light text-foreground/80">
-                    AP
+                <div className="flex items-center justify-between px-4 h-[45px] hover:bg-default/60">
+                  <div className="flex w-full items-center gap-2 cursor-pointer ">
+                    <div className="size-6 flex items-center justify-center bg-default rounded-full text-[9px] font-light text-muted-foreground">
+                      AP
+                    </div>
+                    <div className="flex flex-col text-[12px] leading-3.5 font-light">
+                      <p>Andre Ponce</p>
+                      <p className="text-muted-foreground">Free</p>
+                    </div>
                   </div>
-                  <div className="flex flex-col text-[12px] leading-3.5 font-light">
-                    <p>Andre Ponce</p>
-                    <p className="text-muted-foreground">asponceg@gmail.com</p>
-                  </div>
+
+                  {/* <Button
+                    size="sm"
+                    variant="ghost"
+                    radius="full"
+                    className="px-5 text-muted-foreground h-[29px] py-2 text-[12px]"
+                  >
+                    Upgrade
+                  </Button> */}
                 </div>
               </DropdownTrigger>
               <DropdownMenu aria-label="Dropdown menu with description">
-                <DropdownItem
-                  key="profile"
-                  isReadOnly
-                  className="h-14 gap-2 opacity-100"
-                >
-                  <User
-                    avatarProps={{
-                      size: "sm",
-                      className: "hidden",
-                    }}
-                    classNames={{
-                      name: "text-default-600",
-                      description: "text-default-500",
-                    }}
-                    description="@asponceg@gmail.com"
-                    name="Andre Ponce"
-                  />
-                </DropdownItem>
-                <DropdownSection title="User configuration ">
-                  <DropdownItem className="!transition-none" key="settings">
+                <DropdownSection title="User configuration" showDivider>
+                  <DropdownItem
+                    className="!transition-none"
+                    key="theme"
+                    isReadOnly
+                    shortcut={"T"}
+                    startContent={<SunIcon className="size-4" />}
+                    // endContent={
+                    //   <select
+                    //     className="z-10 outline-solid outline-transparent w-16 py-0.5 rounded-md text-tiny group-data-[hover=true]:border-default-500 border-small border-default-300 dark:border-default-200 bg-transparent text-default-500"
+                    //     id="theme"
+                    //     name="theme"
+                    //   >
+                    //     <option>System</option>
+                    //     <option>Dark</option>
+                    //     <option>Light</option>
+                    //   </select>
+                    // }
+                  >
+                    Theme
+                  </DropdownItem>
+
+                  <DropdownItem
+                    className="!transition-none"
+                    key="language"
+                    startContent={<GlobeAltIcon className="size-4" />}
+                  >
+                    Language
+                  </DropdownItem>
+
+                  <DropdownItem
+                    className="!transition-none"
+                    key="billing"
+                    startContent={<CreditCardIcon className="size-4" />}
+                  >
+                    Billing
+                  </DropdownItem>
+
+                  <DropdownItem
+                    className="!transition-none"
+                    key="settings"
+                    startContent={<Cog6ToothIcon className="size-4" />}
+                  >
                     Settings
+                  </DropdownItem>
+                </DropdownSection>
+
+                <DropdownSection>
+                  <DropdownItem
+                    key="help_and_feedback"
+                    className="!transition-none"
+                  >
+                    Help & Feedback
+                  </DropdownItem>
+
+                  <DropdownItem className="!transition-none" key="logout">
+                    Logout
                   </DropdownItem>
                 </DropdownSection>
               </DropdownMenu>

@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils"
-import React from "react"
+import { cn } from "@/lib/utils";
+import React from "react";
 
 export default function PageComponent({
   children,
@@ -10,5 +10,5 @@ export default function PageComponent({
     <div {...props} className={cn("p-6 text-sm", className)}>
       {children}
     </div>
-  )
+  );
 }
