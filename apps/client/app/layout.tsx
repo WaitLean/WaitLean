@@ -1,11 +1,16 @@
+import Background from "@/components/background";
 import QueryProvider from "@/components/query-provider";
 import Sidebar from "@/components/sidebar";
 import { fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { Button } from "@heroui/button";
+import { Kbd } from "@heroui/kbd";
 import { ToastProvider } from "@heroui/toast";
 import clsx from "clsx";
 import { Metadata } from "next";
+import Image from "next/image";
 import NextTopLoader from "nextjs-toploader";
 import { Providers } from "./providers";
 
@@ -33,36 +38,69 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <NextTopLoader
-          color="#006fee"
-          height={3}
-          showSpinner={false}
-          zIndex={100000}
-        />
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            background: `
-       radial-gradient(ellipse 140% 50% at 15% 60%, rgba(124, 58, 237, 0.05), transparent 48%),
-       radial-gradient(ellipse 90% 80% at 85% 25%, rgba(245, 101, 101, 0.04), transparent 58%),
-       radial-gradient(ellipse 120% 65% at 40% 90%, rgba(34, 197, 94, 0.06), transparent 52%),
-       radial-gradient(ellipse 100% 45% at 70% 5%, rgba(251, 191, 36, 0.03), transparent 42%),
-       radial-gradient(ellipse 80% 75% at 90% 80%, rgba(168, 85, 247, 0.05), transparent 55%),
-       #000000
-     `,
-          }}
-        />
-        <div className="relative z-10 flex">
+        <ToastProvider />
+        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+          <NextTopLoader
+            color="#006fee"
+            height={3}
+            showSpinner={false}
+            zIndex={100000}
+          />
           <QueryProvider>
-            <ToastProvider />
-            <Sidebar />
-            <Providers
-              themeProps={{ attribute: "class", defaultTheme: "dark" }}
-            >
-              <main className="flex-1 w-full">{children}</main>
-            </Providers>
+            <Background />
+
+            <div className="relative z-10 flex flex-col h-screen">
+              <header
+                id="header"
+                className="shrink-0 border-b bg-sidebar p-4 flex items-center justify-between h-14"
+              >
+                <div className="flex gap-2 items-center">
+                  <Image
+                    src={"/icons/waitlean-icon.png"}
+                    width={25}
+                    height={25}
+                    alt={"Waitlean logo"}
+                  />
+                  <span className="font-bold">Kue</span>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <Button
+                    variant="light"
+                    className="text-xs text-muted-foreground"
+                    size="sm"
+                  >
+                    Feedback
+                  </Button>
+
+                  <Button
+                    startContent={<MagnifyingGlassIcon className={"size-4"} />}
+                    radius="full"
+                    variant="bordered"
+                    className="text-muted-foreground text-xs flex hover:border-muted"
+                    size="sm"
+                  >
+                    <span>Search...</span>
+
+                    <Kbd
+                      keys={["command"]}
+                      className="scale-95 bg-transparent text-muted-foreground"
+                    >
+                      k
+                    </Kbd>
+                  </Button>
+                </div>
+              </header>
+
+              <div className="flex flex-row flex-1 overflow-hidden">
+                {/* Sidebar */}
+                <Sidebar />
+                {/* Content */}
+                <main className="w-full overflow-y-auto">{children}</main>{" "}
+              </div>
+            </div>
           </QueryProvider>
-        </div>
+        </Providers>
       </body>
     </html>
   );

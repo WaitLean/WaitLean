@@ -6,17 +6,17 @@ import {
   ChartBarIcon,
   Cog6ToothIcon,
   CreditCardIcon,
+  CursorArrowRippleIcon,
   GlobeAltIcon,
   KeyIcon,
-  PlusCircleIcon,
-  SunIcon,
+  SunIcon
 } from "@heroicons/react/24/outline";
 import clsx from "clsx";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import {
+  Button,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -42,8 +42,8 @@ const navItems = [
   },
   {
     href: "/app/create/waitlist",
-    label: "New Waitlist",
-    icon: PlusCircleIcon,
+    label: "WaitList",
+    icon:   CursorArrowRippleIcon,
   },
 ];
 
@@ -51,20 +51,9 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <div className="min-w-[220px] border-r min-h-[100vh] bg-[#0A0A0A] backdrop-blur-md flex flex-col">
-      <div className="p-4 pt-12 pb-6 flex gap-2 items-center">
-        <Image
-          alt="Banner image"
-          src={"/icons/clock-v.png"}
-          width={25}
-          height={25}
-          className="w-[25px]"
-        />
-        <h2 className="text-xl italic font-medium">WaitLean</h2>
-      </div>
-
+    <aside className="min-w-[220px] border-r bg-sidebar backdrop-blur-md flex flex-col">
       <div className="flex flex-col justify-between flex-1">
-        <ul className="text-sm space-y-1">
+        <ul className="text-sm space-y-1 pt-4 px-2">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = pathname === item.href;
@@ -74,14 +63,14 @@ export default function Sidebar() {
                 <Link
                   href={item.href}
                   className={clsx(
-                    "flex items-center gap-2 py-1.5 px-5 h-[45px] text-muted-foreground hover:bg-default/60",
+                    "flex items-center gap-2 py-1.5 px-2 h-[35px] text-muted-foreground hover:bg-default/60 rounded-sm",
                     {
                       "text-white": isActive,
                     }
                   )}
                 >
                   <Icon
-                    className={cn("size-5", isActive && "text-primary-400")}
+                    className={cn("size-4", isActive && "text-primary-400")}
                   />{" "}
                   {item.label}
                 </Link>
@@ -125,14 +114,14 @@ export default function Sidebar() {
                     </div>
                   </div>
 
-                  {/* <Button
+                  <Button
                     size="sm"
-                    variant="ghost"
+                    variant="faded"
                     radius="full"
-                    className="px-5 text-muted-foreground h-[29px] py-2 text-[12px]"
+                    className="px-5 text-muted-foreground h-[29px] py-2 text-[12px] scale-95"
                   >
                     Upgrade
-                  </Button> */}
+                  </Button>
                 </div>
               </DropdownTrigger>
               <DropdownMenu aria-label="Dropdown menu with description">
@@ -200,6 +189,6 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
-    </div>
+    </aside>
   );
 }

@@ -1,38 +1,18 @@
 "use client";
 
-import PageComponent from "@/components/layouts/root-layout";
+import PageComponent from "@/components/layouts/page-component";
 import { cn } from "@/lib/utils";
-import {
-  CodeBracketIcon,
-  PencilSquareIcon,
-  PlusIcon,
-} from "@heroicons/react/24/outline";
+import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { Alert, Button } from "@heroui/react";
 import Link from "next/link";
 
 const dashboardTasks = [
   {
     id: 1,
-    icon: PlusIcon,
-    title: "Create a new waitlist",
+    icon: PlusCircleIcon,
+    title: "Create new waitlist",
     description: "Select a plan to start collecting signups.",
-    href: "/dashboard/add/waitlist",
-  },
-  {
-    id: 2,
-    icon: PencilSquareIcon,
-    title: "Check out our no-code guides",
-    description:
-      "Want to add your waitlist in HTML, React, Squarespace, Typedream, Webflow, Weebly or Wix? Check out our no-code guides.",
-    href: "/docs",
-  },
-  {
-    id: 3,
-    icon: CodeBracketIcon,
-    title: "Check out our API Documentation",
-    description:
-      "Want full control over your waitlist? Check out our API documentation.",
-    href: "/docs",
+    href: "/app/create/waitlist",
   },
 ];
 
@@ -58,8 +38,8 @@ export default function Dashboard() {
           ></Alert>
         </div>
 
-        <div className="flex flex-col my-10">
-          <h2 className="text-lg">No active waitlist</h2>
+        <div className="flex flex-col my-4">
+          <h2 className="text-base">No active waitlist</h2>
           <h4 className="text-muted-foreground">
             Below are some tasks to get you started.
           </h4>
@@ -70,14 +50,16 @@ export default function Dashboard() {
       <PageComponent className="flex flex-col">
         {dashboardTasks.map((task, index) => (
           <Link key={task.id} href={task.href}>
-            <div className={`flex gap-4 ${index === 0 ? "pb-4" : "py-4"}`}>
+            <div
+              className={`flex items-center gap-4 ${index === 0 ? "pb-4" : "py-4"}`}
+            >
               <div
                 className={cn(
-                  "size-10 rounded-md bg-default flex items-center justify-center",
+                  "size-8 rounded-md bg-default flex items-center justify-center",
                   index == 0 && "!bg-primary-200"
                 )}
               >
-                <task.icon className="size-5" />
+                <task.icon className="size-4" />
               </div>
               <div className="flex flex-col">
                 <p>{task.title}</p>

@@ -3,7 +3,7 @@
 import { submitWaitListAction } from "@/actions/submit-waitlist";
 import Form from "@/components/form";
 import FormField from "@/components/form-field";
-import PageComponent from "@/components/layouts/root-layout";
+import PageComponent from "@/components/layouts/page-component";
 import InputComponent from "@/components/ui/input";
 import { addToast, Button, Checkbox } from "@heroui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -30,8 +30,8 @@ export default function NewWaitlist() {
     mutationFn: submitWaitListAction,
     onSuccess: () => {
       addToast({
-        title: "WaitList created",
-        description: "Your waitlist has been created successfully",
+        title: "Successful",
+        description: "Your waitlist has been created",
         color: "success",
       });
     },
@@ -42,7 +42,7 @@ export default function NewWaitlist() {
   };
 
   return (
-    <PageComponent className="pt-12">
+    <PageComponent>
       <Form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-8"
@@ -55,9 +55,10 @@ export default function NewWaitlist() {
           isRequired
         >
           <InputComponent
-            placeholder="My waitlist name"
+            placeholder="App Launch"
             maxLength={30}
             {...register("name")}
+            autoFocus
           />
         </FormField>
 
