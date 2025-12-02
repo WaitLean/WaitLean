@@ -34,7 +34,7 @@ export default function LaunchWaitList() {
       addToast({
         title: "Successful",
         description: "Your waitlist has been created",
-        color: "success",
+        color: "primary",
       });
     },
   });
@@ -44,7 +44,7 @@ export default function LaunchWaitList() {
   };
 
   return (
-    <PageComponent className="bg-accent/30 border rounded m-8">
+    <PageComponent className="bg-accent/30 border rounded m-8 mx-48 p-8">
       <Form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-8"
@@ -68,7 +68,7 @@ export default function LaunchWaitList() {
 
         <FormField
           title="Waitlist URL"
-          description="If you're using a Waitlist no-code widget or the API, then write the exact URL where you will host your Waitlist. Leave it blank if you're going to use a hosted page from Waitlist."
+          description="Widget will be accessible through this URL"
           error={errors.url}
         >
           <InputComponent
@@ -102,22 +102,19 @@ export default function LaunchWaitList() {
         <hr />
 
         <div className="flex gap-2">
-          <Link href={"/app/waitlist"}>
-            <Button
-              className="w-fit"
-              isDisabled={isPending}
-              isLoading={isPending}
-              variant="bordered"
-              size="sm"
-            >
-              <Type variant="sm">Cancel</Type>
-            </Button>
-          </Link>
+          <Button
+            as={Link}
+            href="/app/waitlist"
+            className="w-fit"
+            variant="bordered"
+            size="sm"
+          >
+            <Type variant="sm">Cancel</Type>
+          </Button>
           <Button
             color="primary"
             className="w-fit border"
             isDisabled={isPending}
-            isLoading={isPending}
             type="submit"
             size="sm"
           >

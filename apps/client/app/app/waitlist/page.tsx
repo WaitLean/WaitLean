@@ -1,4 +1,5 @@
 "use client";
+
 import PageComponent from "@/components/layouts/page-component";
 import Type from "@/components/type";
 import {
@@ -20,7 +21,9 @@ import {
   TableRow,
   getKeyValue,
 } from "@heroui/react";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function WaitListPage() {
   const rows = [
@@ -65,20 +68,27 @@ export default function WaitListPage() {
     },
   ];
 
+  const router = useRouter()
+
   return (
     <PageComponent>
-      <Type variant="h1" className="mb-4 font-medium">
+      <Type variant="h1" className="mb-8 font-medium">
         WaitList
       </Type>
 
       <Table
         aria-label="Waitlist Table"
         radius="sm"
-        selectionMode="single"
         topContentPlacement="outside"
-        bottomContentPlacement="inside"
-        isVirtualized
-        removeWrapper
+        bottomContentPlacement="outside"
+        classNames={{
+          th: "!rounded-b-none bg-background",
+          wrapper: "p-0 border",
+          td: "first:before:rounded-none last:before:rounded-e-none cursor-pointer",
+        }}
+        onRowAction={(e) => {
+          router.push(`/app/launch/waitlist/${e}`)
+        }}
         topContent={
           <div className="flex flex-col gap-4">
             <div className="flex justify-between">
@@ -114,16 +124,17 @@ export default function WaitListPage() {
                   <ListBulletIcon className="size-4" />
                 </Button>
 
-                <Link href={"/app/launch/waitlist"}>
-                  <Button
-                    className="bg-primary hover:border-red-500 border-transparent border transition-none"
-                    startContent={<PlusIcon className="size-5" />}
-                    size="sm"
-                    variant="shadow"
-                  >
-                    New Launch
-                  </Button>
-                </Link>
+                <Button
+                  as={Link}
+                  href="/app/launch/waitlist"
+                  className="bg-primary hover:border-red-500 border-transparent border transition-none"
+                  startContent={<PlusIcon className="size-5" />}
+                  size="sm"
+                  variant="shadow"
+                  type="button"
+                >
+                  New Launch
+                </Button>
               </div>
             </div>
 
@@ -150,9 +161,10 @@ export default function WaitListPage() {
             </TableColumn>
           )}
         </TableHeader>
+
         <TableBody items={rows} emptyContent={"No rows to display."}>
           {(item: any) => (
-            <TableRow key={item.key}>
+            <TableRow key={item.key} className="hover:bg-default-200">
               {(columnKey: any) => (
                 <TableCell>{getKeyValue(item, columnKey)}</TableCell>
               )}

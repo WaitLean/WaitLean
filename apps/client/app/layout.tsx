@@ -64,7 +64,7 @@ export default function RootLayout({
                   />
                   <span className="font-bold">Kue</span>
                   <span className="text-muted-foreground">
-                    <SlashIcon className="size-4" />
+                    <SlashIcon className="size-4 text-muted-foreground" />
                   </span>
                   <Type className="font-bold">New Launch</Type>
                 </div>

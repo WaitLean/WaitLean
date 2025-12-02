@@ -12,7 +12,7 @@ const dashboardTasks = [
     icon: PlusCircleIcon,
     title: "Create new waitlist",
     description: "Select a plan to start collecting signups.",
-    href: "/app/create/waitlist",
+    href: "/app/launch/waitlist",
   },
 ];
 
