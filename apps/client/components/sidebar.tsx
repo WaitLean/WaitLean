@@ -3,12 +3,9 @@
 import { cn } from "@/lib/utils";
 import {
   BookOpenIcon,
-  ChartBarIcon,
   Cog6ToothIcon,
   CreditCardIcon,
-  CursorArrowRippleIcon,
   GlobeAltIcon,
-  KeyIcon,
   SunIcon,
 } from "@heroicons/react/24/outline";
 import clsx from "clsx";
@@ -23,32 +20,11 @@ import {
   DropdownSection,
   DropdownTrigger,
 } from "@heroui/react";
-
-const navItems = [
-  {
-    href: "/app/dashboard",
-    label: "Dashboard",
-    icon: ChartBarIcon,
-  },
-  {
-    href: "/app/google-search",
-    label: "Google Search",
-    icon: KeyIcon,
-  },
-  {
-    href: "/app/landing-page",
-    label: "Landing page",
-    icon: GlobeAltIcon,
-  },
-  {
-    href: "/app/waitlist",
-    label: "WaitList",
-    icon: CursorArrowRippleIcon,
-  },
-];
+import useSidebarStore from "@/store/sidebar/sidebar.store";
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const { navItems } = useSidebarStore();
 
   return (
     <aside className="min-w-[220px] border-r bg-sidebar backdrop-blur-md flex flex-col">
