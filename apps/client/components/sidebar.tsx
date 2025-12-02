@@ -9,7 +9,7 @@ import {
   CursorArrowRippleIcon,
   GlobeAltIcon,
   KeyIcon,
-  SunIcon
+  SunIcon,
 } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import Link from "next/link";
@@ -41,9 +41,9 @@ const navItems = [
     icon: GlobeAltIcon,
   },
   {
-    href: "/app/create/waitlist",
+    href: "/app/waitlist",
     label: "WaitList",
-    icon:   CursorArrowRippleIcon,
+    icon: CursorArrowRippleIcon,
   },
 ];
 
@@ -132,17 +132,6 @@ export default function Sidebar() {
                     isReadOnly
                     shortcut={"T"}
                     startContent={<SunIcon className="size-4" />}
-                    // endContent={
-                    //   <select
-                    //     className="z-10 outline-solid outline-transparent w-16 py-0.5 rounded-md text-tiny group-data-[hover=true]:border-default-500 border-small border-default-300 dark:border-default-200 bg-transparent text-default-500"
-                    //     id="theme"
-                    //     name="theme"
-                    //   >
-                    //     <option>System</option>
-                    //     <option>Dark</option>
-                    //     <option>Light</option>
-                    //   </select>
-                    // }
                   >
                     Theme
                   </DropdownItem>

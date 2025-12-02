@@ -1,10 +1,11 @@
 import Background from "@/components/background";
 import QueryProvider from "@/components/query-provider";
 import Sidebar from "@/components/sidebar";
+import Type from "@/components/type";
 import { fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon, SlashIcon } from "@heroicons/react/24/outline";
 import { Button } from "@heroui/button";
 import { Kbd } from "@heroui/kbd";
 import { ToastProvider } from "@heroui/toast";
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icons/waitlean.png",
   },
 };
 
@@ -62,6 +63,10 @@ export default function RootLayout({
                     alt={"Waitlean logo"}
                   />
                   <span className="font-bold">Kue</span>
+                  <span className="text-muted-foreground">
+                    <SlashIcon className="size-4" />
+                  </span>
+                  <Type className="font-bold">New Launch</Type>
                 </div>
 
                 <div className="flex items-center gap-4">
@@ -93,7 +98,6 @@ export default function RootLayout({
               </header>
 
               <div className="flex flex-row flex-1 overflow-hidden">
-                {/* Sidebar */}
                 <Sidebar />
                 {/* Content */}
                 <main className="w-full overflow-y-auto">{children}</main>{" "}

@@ -4,6 +4,7 @@ import { submitWaitListAction } from "@/actions/submit-waitlist";
 import Form from "@/components/form";
 import FormField from "@/components/form-field";
 import PageComponent from "@/components/layouts/page-component";
+import Type from "@/components/type";
 import InputComponent from "@/components/ui/input";
 import { addToast, Button, Checkbox } from "@heroui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,9 +13,10 @@ import {
   SubmitWaitListValues,
 } from "@repo/packages/schemas/submit-watlist.zod";
 import { useMutation } from "@tanstack/react-query";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 
-export default function NewWaitlist() {
+export default function LaunchWaitList() {
   const {
     register,
     handleSubmit,
@@ -42,7 +44,7 @@ export default function NewWaitlist() {
   };
 
   return (
-    <PageComponent>
+    <PageComponent className="bg-accent/30 border rounded m-8">
       <Form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-8"
@@ -97,15 +99,31 @@ export default function NewWaitlist() {
           </Checkbox>
         </FormField>
 
-        <Button
-          color="primary"
-          className="w-fit h-[38px]"
-          isDisabled={isPending}
-          isLoading={isPending}
-          type="submit"
-        >
-          Create WaitList
-        </Button>
+        <hr />
+
+        <div className="flex gap-2">
+          <Link href={"/app/waitlist"}>
+            <Button
+              className="w-fit"
+              isDisabled={isPending}
+              isLoading={isPending}
+              variant="bordered"
+              size="sm"
+            >
+              <Type variant="sm">Cancel</Type>
+            </Button>
+          </Link>
+          <Button
+            color="primary"
+            className="w-fit border"
+            isDisabled={isPending}
+            isLoading={isPending}
+            type="submit"
+            size="sm"
+          >
+            <Type variant="sm">Create WaitList</Type>
+          </Button>
+        </div>
       </Form>
     </PageComponent>
   );
