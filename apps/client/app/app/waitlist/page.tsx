@@ -68,7 +68,7 @@ export default function WaitListPage() {
     },
   ];
 
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <PageComponent>
@@ -87,7 +87,7 @@ export default function WaitListPage() {
           td: "first:before:rounded-none last:before:rounded-e-none cursor-pointer",
         }}
         onRowAction={(e) => {
-          router.push(`/app/launch/waitlist/${e}`)
+          router.push(`/app/launch/waitlist/${e}`);
         }}
         topContent={
           <div className="flex flex-col gap-4">

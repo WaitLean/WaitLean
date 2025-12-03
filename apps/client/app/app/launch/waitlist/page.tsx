@@ -44,7 +44,7 @@ export default function LaunchWaitList() {
   };
 
   return (
-    <PageComponent className="bg-accent/30 border rounded m-8 mx-48 p-8">
+    <PageComponent className="bg-accent/30 border rounded m-8 p-8">
       <Form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-8"

@@ -10,8 +10,8 @@ import {
 } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
+import useSidebarStore from "@/store/sidebar/sidebar.store";
 import {
   Button,
   Dropdown,
@@ -20,40 +20,23 @@ import {
   DropdownSection,
   DropdownTrigger,
 } from "@heroui/react";
-import useSidebarStore from "@/store/sidebar/sidebar.store";
+import ItemList from "./items-list";
 
 export default function Sidebar() {
-  const pathname = usePathname();
-  const { navItems } = useSidebarStore();
+  const { navItems, children } = useSidebarStore();
 
   return (
     <aside className="min-w-[220px] border-r bg-sidebar backdrop-blur-md flex flex-col">
       <div className="flex flex-col justify-between flex-1">
-        <ul className="text-sm space-y-1 pt-4 px-2">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = pathname === item.href;
+        {!navItems && children && <>{children}</>}
 
-            return (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className={clsx(
-                    "flex items-center gap-2 py-1.5 px-2 h-[35px] text-muted-foreground hover:bg-default/60 rounded-sm",
-                    {
-                      "text-white": isActive,
-                    }
-                  )}
-                >
-                  <Icon
-                    className={cn("size-4", isActive && "text-primary-400")}
-                  />{" "}
-                  {item.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        {navItems && !children && <ItemList navItems={navItems} />}
+
+        {!navItems && !children && (
+          <div className="p-4 text-center text-sm text-muted-foreground">
+            No navigation items
+          </div>
+        )}
 
         <div className="w-full">
           <hr />

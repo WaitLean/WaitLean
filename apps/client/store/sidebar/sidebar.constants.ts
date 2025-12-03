@@ -28,4 +28,8 @@ export const defaultNavItems = [
   },
 ];
 
-export type NavItemsType = typeof defaultNavItems;
+type navItemsType = typeof defaultNavItems;
+
+export interface NavItemsI extends navItemsType {
+  icon?: React.ForwardRefExoticComponent<any>;
+}

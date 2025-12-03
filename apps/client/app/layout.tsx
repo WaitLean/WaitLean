@@ -1,6 +1,6 @@
 import Background from "@/components/background";
 import QueryProvider from "@/components/query-provider";
-import Sidebar from "@/components/sidebar";
+import Sidebar from "@/components/sidebar/sidebar";
 import Type from "@/components/type";
 import { fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
@@ -12,6 +12,7 @@ import { ToastProvider } from "@heroui/toast";
 import clsx from "clsx";
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import NextTopLoader from "nextjs-toploader";
 import { Providers } from "./providers";
 
@@ -62,7 +63,9 @@ export default function RootLayout({
                     height={25}
                     alt={"Waitlean logo"}
                   />
-                  <span className="font-bold">Kue</span>
+                  <Link href={"/app/dashboard"}>
+                    <span className="font-bold">Kue</span>
+                  </Link>
                   <span className="text-muted-foreground">
                     <SlashIcon className="size-4 text-muted-foreground" />
                   </span>

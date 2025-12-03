@@ -25,13 +25,14 @@ const InputComponent = forwardRef<HTMLInputElement, InputProps>(
           value={inputValue}
           onChange={handleChange}
           maxLength={maxLength}
+          size="sm"
           className={cn(
-            "flex-1 rounded-lg outline-primary data-[focus=true]:outline-2 hover:!bg-transparent "
+            "flex-1 rounded-lg outline-primary data-[focus=true]:outline-2 hover:!bg-transparent"
           )}
           classNames={{
-            inputWrapper: "data-[hover=true]:!bg-default-100"
+            inputWrapper: "data-[hover=true]:!bg-default-100",
+            input: "text-xs",
           }}
-
           {...rest}
           startContent={
             type === "url" && (
