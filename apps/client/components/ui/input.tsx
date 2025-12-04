@@ -25,7 +25,6 @@ const InputComponent = forwardRef<HTMLInputElement, InputProps>(
           value={inputValue}
           onChange={handleChange}
           maxLength={maxLength}
-          size="sm"
           className={cn(
             "flex-1 rounded-lg outline-primary data-[focus=true]:outline-2 hover:!bg-transparent"
           )}

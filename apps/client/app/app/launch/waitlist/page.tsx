@@ -101,7 +101,7 @@ export default function LaunchWaitList() {
 
         <hr />
 
-        <div className="flex gap-2">
+        <div className="flex gap-2 justify-end">
           <Button
             as={Link}
             href="/app/waitlist"
